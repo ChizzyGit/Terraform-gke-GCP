@@ -1,10 +1,10 @@
 terraform { 
   cloud { 
     
-    organization = "DigitalWitchng" 
+    organization = "SkyDolls-Tech" 
 
     workspaces { 
-      name = "kubernetes-google-gke" 
+      name = "terraform-gke-kubenetes" 
     } 
   } 
 }
