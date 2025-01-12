@@ -1,12 +1,10 @@
 name: 'Terraform_Deploy GKE to GCP'
 
-
 # trigger point
 on:
   push:
     branches: [ "main" ]
   pull_request:
-
 
 jobs:
   terraform:
@@ -22,7 +20,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-
     - name: Authenticate to GCP
       env:
         GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS_JSON }}
@@ -31,7 +28,6 @@ jobs:
         gcloud auth activate-service-account --key-file=gcp-key.json
         gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
 
-    
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
@@ -44,7 +40,8 @@ jobs:
       run: terraform plan -input=false -var="project_id=${{ secrets.GCP_PROJECT_ID }}" -var="region=us-central1"
 
     - name: Terraform Apply
-     run: terraform apply -auto-approve -input=false -var="project_id=${{ secrets.GCP_PROJECT_ID }}" -var="region=us-central1"
+      run: terraform apply -auto-approve -input=false -var="project_id=${{ secrets.GCP_PROJECT_ID }}" -var="region=us-central1"
+
 
     #- name: Terraform Destroy
       #run: terraform destroy -auto-approve -input=false -var="project_id=${{ secrets.GCP_PROJECT_ID }}" -var="region=us-central1"
