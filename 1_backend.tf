@@ -4,7 +4,7 @@ terraform {
     organization = "SkyDolls-Tech" 
 
     workspaces { 
-      name = "terraform-gke-kubenetes" 
+      name = "terraform-gke-deploy" 
     } 
   } 
 }

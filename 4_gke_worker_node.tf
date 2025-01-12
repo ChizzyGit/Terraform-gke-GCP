@@ -24,7 +24,7 @@ resource "google_container_node_pool" "general" {
   node_config {
     preemptible  = false
     machine_type = "e2-small"
-
+    disk_size_gb = 50 # Reduce to a value that fits your quota
     labels = {
       role = "general"
     }
@@ -50,7 +50,7 @@ resource "google_container_node_pool" "general" {
 #   }
 
 #   autoscaling {
-#     min_node_count = 2
+#     min_node_count = 1
 #     max_node_count = 10
 #   }
 

@@ -79,7 +79,7 @@ resource "google_compute_address" "nat" {
 # Create a firewall rule
 # =======================
 resource "google_compute_firewall" "allow-ssh" {
-  name    = "allow-ssh"
+  name    = "allow-ssh-new"
   network = google_compute_network.main.name
 
   allow {
@@ -89,4 +89,3 @@ resource "google_compute_firewall" "allow-ssh" {
 
   source_ranges = ["0.0.0.0/0"]
 }
-
