@@ -1,6 +1,7 @@
 variable "project_id" {
   description = "The GCP project ID"
   type        = string
+  #default     = "sapient-spark-436013-t0" #To be used when test-running tf in vscode
 }
 
 variable "region" {
