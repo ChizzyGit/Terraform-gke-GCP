@@ -5,9 +5,11 @@ resource "google_service_account" "kubernetes" {
 
 # Define the GKE Cluster
 resource "google_container_cluster" "primary" {
-  name     = "primary-cluster"
-  location = "us-central1"
-  network  = "default"
+  name                     = "primary-cluster"
+  location                 = "us-central1"
+  network                  = "default"
+  initial_node_count       = 1   # Add initial_node_count to meet the requirement
+  remove_default_node_pool = true  # Remove the default node pool to use custom node pools
 
   # Define node locations (zones)
   node_locations = ["us-central1-a", "us-central1-b", "us-central1-c"]
@@ -27,15 +29,11 @@ resource "google_container_node_pool" "general" {
     auto_upgrade = true
   }
 
-  autoscaling {
-    min_node_count = 1
-    max_node_count = 10
-  }
-
   node_config {
     preemptible  = false
     machine_type = "e2-small"
     disk_size_gb = 50
+
     labels = {
       role = "general"
     }
