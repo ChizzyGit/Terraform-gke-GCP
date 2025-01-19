@@ -1,8 +1,3 @@
-# Variables
-variable "region" {
-  default = "us-central1"
-}
-
 # Create Service Account
 resource "google_service_account" "kubernetes" {
   account_id = "kubernetes"
