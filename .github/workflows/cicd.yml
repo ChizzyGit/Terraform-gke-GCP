@@ -40,12 +40,12 @@ jobs:
         run: terraform plan -input=false -var="project_id=${{ secrets.GCP_PROJECT_ID }}" -var="region=us-central1"
 
       # Uncomment the following section if you want to apply the plan
-      - name: Terraform Apply
-        run: terraform apply -auto-approve -input=false -var="project_id=${{ secrets.GCP_PROJECT_ID }}" -var="region=us-central1"
+      #- name: Terraform Apply
+      # run: terraform apply -auto-approve -input=false -var="project_id=${{ secrets.GCP_PROJECT_ID }}" -var="region=us-central1"
 
       # Uncomment the following section if you want to destroy the infrastructure
-      #- name: Terraform Destroy
-      #  run: terraform destroy -auto-approve -input=false -var="project_id=${{ secrets.GCP_PROJECT_ID }}" -var="region=us-central1"
+      - name: Terraform Destroy
+        run: terraform destroy -auto-approve -input=false -var="project_id=${{ secrets.GCP_PROJECT_ID }}" -var="region=us-central1"
 
       - name: Install gke-gcloud-auth-plugin
         run: |
